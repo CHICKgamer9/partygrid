@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #07090d;
+  --bg-elev: #10151c;
+  --bg-soft: #161d27;
+  --line: #243041;
+  --text: #e8eef4;
+  --muted: #8b9bb0;
+  --accent: #3dffb0;
+  --accent-2: #ff5c8a;
+  --warn: #f5c14a;
+  --danger: #ff6b6b;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-card: var(--bg-elev);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(61, 255, 176, 0.08), transparent 50%),
+    radial-gradient(900px 420px at 110% 0%, rgba(255, 92, 138, 0.08), transparent 45%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  min-height: 100%;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 80%);
+  z-index: 0;
+}
+
+.page-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  color: inherit;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(61, 255, 176, 0.28);
+}
