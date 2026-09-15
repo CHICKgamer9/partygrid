@@ -82,10 +82,28 @@ SQLite is for local/dev. Vercel’s filesystem is ephemeral — do not use the S
 
 ## Deploy on Vercel
 
-1. Import the GitHub repo.
-2. Set env vars from `.env.example` (`AUTH_SECRET`, `AUTH_URL` = your production URL, `DATABASE_URL` for Postgres, optional OAuth keys).
-3. Build command can stay `prisma generate && next build` (see `package.json`). Run `prisma migrate deploy` as a release / build step once Postgres is wired.
-4. Add the same OAuth redirect URLs for the production domain.
+`npm run build` (`scripts/build.mjs`) keeps **SQLite** when `DATABASE_URL` starts with `file:`. If `DATABASE_URL` is a `postgres://` / `postgresql://` URL, the script flips Prisma to `postgresql`, runs `prisma db push`, then `next build`.
+
+### Required env vars
+
+| Name | Notes |
+| --- | --- |
+| `DATABASE_URL` | **Postgres** connection string (Neon, Supabase, or Vercel Postgres). Do not use the local `file:./dev.db` URL on Vercel. |
+| `AUTH_SECRET` | `openssl rand -base64 32` |
+| `NEXTAUTH_SECRET` | Same value as `AUTH_SECRET` |
+| `AUTH_URL` | Production origin, e.g. `https://your-app.vercel.app` |
+| `NEXTAUTH_URL` | Same as `AUTH_URL` |
+
+### Optional env vars
+
+| Name | Notes |
+| --- | --- |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Google sign-in. Redirect `{AUTH_URL}/api/auth/callback/google` |
+| `DISCORD_CLIENT_ID` / `DISCORD_CLIENT_SECRET` | Discord sign-in + link. Redirects `{AUTH_URL}/api/auth/callback/discord` and `{AUTH_URL}/api/discord/callback` |
+| `STEAM_API_KEY` | Persona lookup + URL claim verification |
+| `STEAM_REALM` | Defaults to `AUTH_URL` |
+
+After the first deploy, add those OAuth redirect URLs for the Vercel domain. Run `npx prisma db seed` against production only if you want demo posts.
 
 ## Scripts
 
