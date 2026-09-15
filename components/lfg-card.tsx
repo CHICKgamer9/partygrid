@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Badge, Card, displayNameOf } from "@/components/ui";
 import { UserAvatar } from "@/components/user-avatar";
-import { formatMelbourne, isExpired, relativeExpiry } from "@/lib/time";
+import { formatWhen, isExpired, relativeExpiry } from "@/lib/time";
 
 type LfgCardPost = {
   id: string;
@@ -56,7 +56,7 @@ export function LfgCard({ post }: { post: LfgCardPost }) {
           <span>{displayNameOf(post.user)}</span>
         </Link>
         <span className="text-xs text-muted">
-          {formatMelbourne(post.createdAt)}
+          {formatWhen(post.createdAt)}
         </span>
       </div>
     </Card>

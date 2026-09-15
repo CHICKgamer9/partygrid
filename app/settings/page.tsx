@@ -12,8 +12,8 @@ export default async function SettingsPage() {
       <div>
         <h1 className="text-3xl font-bold">Edit profile</h1>
         <p className="text-sm text-muted">
-          Default region is Oceania. Times across the app use Australia/Melbourne
-          unless you change your timezone.
+          Region and timezone are optional. Times display in your timezone if
+          you set one, otherwise UTC.
         </p>
         <div className="mt-3 flex gap-4 text-sm">
           <Link href="/settings/accounts" className="text-accent hover:underline">

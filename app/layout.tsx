@@ -16,17 +16,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "PartyGrid",
-    template: "%s · PartyGrid",
+    default: "SquadStack",
+    template: "%s · SquadStack",
   },
   description:
-    "Oceania-friendly gamer profiles, LFG, clip shares, squads and badges. Discord is chat — we find the party.",
+    "Find your squad. Prove you play. Keep the party together — without replacing Discord.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en-AU"
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="page-wrap flex min-h-full flex-col">

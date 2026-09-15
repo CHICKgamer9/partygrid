@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Badge, Card, displayNameOf } from "@/components/ui";
 import { UserAvatar } from "@/components/user-avatar";
 import { parseClipUrl } from "@/lib/clips";
-import { formatMelbourne } from "@/lib/time";
+import { formatWhen } from "@/lib/time";
 import { ClipEmbed } from "@/components/clip-embed";
 
 type ClipItem = {
@@ -45,7 +45,7 @@ export function ClipCard({ clip }: { clip: ClipItem }) {
             target="_blank"
             rel="noreferrer"
           >
-            Open · {formatMelbourne(clip.createdAt)}
+            Open · {formatWhen(clip.createdAt)}
           </a>
         </div>
       </div>

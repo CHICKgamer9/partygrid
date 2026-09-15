@@ -10,7 +10,7 @@ export default async function NewSquadPage() {
     <Container className="max-w-2xl space-y-6">
       <div>
         <h1 className="text-3xl font-bold">Create a squad</h1>
-        <p className="text-sm text-muted">You&apos;ll be the first member. Invite mates from the page.</p>
+        <p className="text-sm text-muted">You&apos;ll be the first member. Share the page to invite others.</p>
       </div>
       <Card className="p-6">
         <SquadForm />

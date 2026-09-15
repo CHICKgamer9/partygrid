@@ -4,7 +4,7 @@ import { SignUpForm } from "@/components/forms";
 import { Button, Card, Container } from "@/components/ui";
 import { authFlags } from "@/lib/constants";
 
-export const metadata = { title: "Join PartyGrid" };
+export const metadata = { title: "Join SquadStack" };
 
 export default function SignUpPage() {
   const flags = authFlags();
@@ -13,9 +13,9 @@ export default function SignUpPage() {
   return (
     <Container className="max-w-md">
       <Card className="p-6">
-        <h1 className="text-2xl font-bold">Join the grid</h1>
+        <h1 className="text-2xl font-bold">Join SquadStack</h1>
         <p className="mt-1 text-sm text-muted">
-          Email signup with a 13+ age gate. Default region is Oceania.
+          Email signup with a 13+ age gate. Region and timezone are optional.
         </p>
         <div className="mt-6">
           <SignUpForm />
@@ -42,7 +42,7 @@ export default function SignUpPage() {
           </div>
         )}
         <p className="mt-6 text-sm text-muted">
-          Already on the grid?{" "}
+          Already have an account?{" "}
           <Link href="/signin" className="text-accent hover:underline">
             Sign in
           </Link>

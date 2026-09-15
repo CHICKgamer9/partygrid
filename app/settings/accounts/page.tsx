@@ -61,7 +61,7 @@ export default async function AccountsPage({
         ) : (
           <p className="rounded-xl border border-line bg-white/5 px-3 py-2 text-sm text-muted">
             Discord OAuth isn&apos;t configured (missing DISCORD_CLIENT_ID / SECRET).
-            Claim a tag so mates can still find you.
+            Claim a tag so people can still find you.
           </p>
         )}
         <ClaimAccountForm

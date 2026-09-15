@@ -24,7 +24,7 @@ export default async function SquadsPage() {
       {squads.length === 0 ? (
         <EmptyState
           title="No squads yet"
-          body="Spin one up for the next Oceania night."
+          body="Spin one up for the next session."
           action={<Button href="/squads/new">Create squad</Button>}
         />
       ) : (

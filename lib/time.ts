@@ -1,15 +1,22 @@
-import { APP_TZ } from "@/lib/constants";
-
-export function melbourneDate(date = new Date()) {
-  return date.toLocaleDateString("en-CA", { timeZone: APP_TZ });
+export function calendarDate(date = new Date(), timeZone = "UTC") {
+  return date.toLocaleDateString("en-CA", { timeZone });
 }
 
-export function formatMelbourne(date: Date, withTime = true) {
-  return date.toLocaleString("en-AU", {
-    timeZone: APP_TZ,
-    dateStyle: "medium",
-    ...(withTime ? { timeStyle: "short" } : {}),
-  });
+export function formatWhen(date: Date, timeZone?: string | null, withTime = true) {
+  const zone = timeZone && timeZone.length > 0 ? timeZone : "UTC";
+  try {
+    return date.toLocaleString("en", {
+      timeZone: zone,
+      dateStyle: "medium",
+      ...(withTime ? { timeStyle: "short" } : {}),
+    });
+  } catch {
+    return date.toLocaleString("en", {
+      timeZone: "UTC",
+      dateStyle: "medium",
+      ...(withTime ? { timeStyle: "short" } : {}),
+    });
+  }
 }
 
 export function ageFromDob(dob: Date, now = new Date()) {

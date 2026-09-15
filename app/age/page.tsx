@@ -9,7 +9,7 @@ export default function AgePage() {
       <h1 className="text-3xl font-bold">Age policy</h1>
       <Card className="space-y-4 p-6 text-sm leading-7 text-muted">
         <p>
-          PartyGrid is for people aged <strong className="text-foreground">{MIN_AGE} or over</strong>.
+          SquadStack is for people aged <strong className="text-foreground">{MIN_AGE} or over</strong>.
           Email signup asks for a date of birth. Google or Discord sign-in asks
           for the same check on first visit.
         </p>
@@ -18,8 +18,8 @@ export default function AgePage() {
           someone is under {MIN_AGE}, the account is removed.
         </p>
         <p>
-          Parents or carers in Australia can email the operator if a minor has
-          signed up. Use the report tool on a profile if you spot underage use.
+          Parents or carers can contact the operator if a minor has signed up.
+          Use the report tool on a profile if you spot underage use.
         </p>
       </Card>
     </Container>

@@ -3,12 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { syncAchievements } from "@/lib/achievements";
-import {
-  DEFAULT_REGION,
-  LFG_EXPIRY_HOURS,
-  PLATFORMS,
-  REGIONS,
-} from "@/lib/constants";
+import { LFG_EXPIRY_HOURS, PLATFORMS, REGIONS } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 import { requireOnboarded } from "@/lib/session";
 import { hoursFromNow } from "@/lib/time";
@@ -23,7 +18,7 @@ function parseLfg(formData: FormData) {
   const platform = formString(formData, "platform");
   const rank = formString(formData, "rank");
   const rolesNeeded = formString(formData, "rolesNeeded");
-  const region = formString(formData, "region") || DEFAULT_REGION;
+  const region = formString(formData, "region");
   const voice = formData.get("voice") === "on" || formData.get("voice") === "yes";
   const discordLink = formString(formData, "discordLink");
   const hours = Number(formString(formData, "expiresInHours") || "6");

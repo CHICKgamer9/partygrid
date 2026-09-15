@@ -15,7 +15,7 @@ export default async function OnboardingPage() {
       <Card className="p-6">
         <h1 className="text-2xl font-bold">One more step</h1>
         <p className="mt-2 text-sm text-muted">
-          OAuth gets you in, but PartyGrid is 13+. Confirm your date of birth
+          OAuth gets you in, but SquadStack is 13+. Confirm your date of birth
           and the Terms before you post.
         </p>
         <div className="mt-6">

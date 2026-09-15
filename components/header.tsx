@@ -19,10 +19,10 @@ export async function Header() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2 font-semibold">
             <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent text-sm font-black text-black">
-              PG
+              SS
             </span>
             <span className="tracking-tight">
-              Party<span className="text-accent">Grid</span>
+              Squad<span className="text-accent">Stack</span>
             </span>
           </Link>
           <nav className="hidden items-center gap-1 sm:flex">
@@ -70,7 +70,7 @@ export async function Header() {
                 Sign in
               </Button>
               <Button href="/signup" variant="primary">
-                Join the grid
+                Join SquadStack
               </Button>
             </>
           )}

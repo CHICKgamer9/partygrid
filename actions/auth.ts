@@ -43,12 +43,12 @@ export async function registerAction(
 
   const dob = new Date(`${dobRaw}T00:00:00`);
   if (Number.isNaN(dob.getTime()) || ageFromDob(dob) < MIN_AGE) {
-    return { error: `You need to be ${MIN_AGE} or over to join PartyGrid.` };
+    return { error: `You need to be ${MIN_AGE} or over to join SquadStack.` };
   }
 
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
-    return { error: "That email is already on the grid. Try signing in." };
+    return { error: "That email is already registered. Try signing in." };
   }
 
   const passwordHash = await bcrypt.hash(password, 12);
@@ -60,8 +60,6 @@ export async function registerAction(
       displayName,
       dateOfBirth: dob,
       tosAcceptedAt: new Date(),
-      region: "Oceania",
-      timezone: "Australia/Melbourne",
     },
   });
 
@@ -123,7 +121,7 @@ export async function completeOnboardingAction(
   }
   const dob = new Date(`${dobRaw}T00:00:00`);
   if (Number.isNaN(dob.getTime()) || ageFromDob(dob) < MIN_AGE) {
-    return { error: `You need to be ${MIN_AGE} or over to use PartyGrid.` };
+    return { error: `You need to be ${MIN_AGE} or over to use SquadStack.` };
   }
   await prisma.user.update({
     where: { id: user.id },

@@ -29,19 +29,19 @@ export default async function HomePage() {
     <Container className="space-y-10">
       <section className="overflow-hidden rounded-3xl border border-line bg-card px-6 py-10 sm:px-10">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-          Oceania · Sleep Twinz lab
+          Global LFG · clips · squads
         </p>
         <h1 className="mt-3 max-w-2xl text-4xl font-black tracking-tight sm:text-5xl">
-          Find a party. Show your skill.
+          Find your squad. Prove you play.
         </h1>
         <p className="mt-4 max-w-xl text-muted">
-          Verified-when-we-can gamer profiles, Oceania-first LFG, clip shares and
-          squads. Discord stays the chat — PartyGrid is how you get organised.
+          Gamer profiles, looking-for-group posts, clip shares and squads.
+          Discord stays the chat — SquadStack keeps the party together.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button href="/lfg">Browse LFG</Button>
           <Button href="/signup" variant="secondary">
-            Join the grid
+            Join SquadStack
           </Button>
           <Button href="/clips" variant="ghost">
             Watch clips
@@ -62,7 +62,7 @@ export default async function HomePage() {
         {lfg.length === 0 ? (
           <EmptyState
             title="No live parties yet"
-            body="Be the first to post an Oceania LFG."
+            body="Be the first to post an LFG."
             action={<Button href="/lfg/new">Post LFG</Button>}
           />
         ) : (
@@ -78,7 +78,7 @@ export default async function HomePage() {
         <div className="flex items-end justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold">Fresh clips</h2>
-            <p className="text-sm text-muted">Newest highlights from the grid.</p>
+            <p className="text-sm text-muted">Newest highlights from the stack.</p>
           </div>
           <Link href="/clips" className="text-sm text-accent hover:underline">
             Discover

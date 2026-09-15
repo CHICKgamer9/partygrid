@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// NextAuth / Auth.js adapter models + PartyGrid profile fields.
+// NextAuth / Auth.js adapter models + SquadStack profile fields.
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -18,8 +18,8 @@ model User {
   displayName   String?
   avatarUrl     String?
   bio           String?
-  region        String    @default("Oceania")
-  timezone      String    @default("Australia/Melbourne")
+  region        String    @default("")
+  timezone      String    @default("")
   dateOfBirth   DateTime?
   tosAcceptedAt DateTime?
   createdAt     DateTime  @default(now())
@@ -107,7 +107,7 @@ model LfgPost {
   platform    String
   rank        String?
   rolesNeeded String?
-  region      String   @default("Oceania")
+  region      String   @default("Global")
   voice       Boolean  @default(false)
   discordLink String?
   expiresAt   DateTime

@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { DEFAULT_REGION, REGIONS } from "@/lib/constants";
+import { REGIONS } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 import { requireOnboarded } from "@/lib/session";
 import { syncAchievements } from "@/lib/achievements";
@@ -19,14 +19,14 @@ export async function updateProfileAction(
   const displayName = formString(formData, "displayName");
   const bio = formString(formData, "bio");
   const avatarUrl = formString(formData, "avatarUrl");
-  const region = formString(formData, "region") || DEFAULT_REGION;
-  const timezone = formString(formData, "timezone") || "Australia/Melbourne";
+  const region = formString(formData, "region");
+  const timezone = formString(formData, "timezone");
   const tagsRaw = formString(formData, "gameTags");
 
   if (displayName.length < 2) {
     return { error: "Display name needs at least 2 characters." };
   }
-  if (!REGIONS.includes(region as (typeof REGIONS)[number])) {
+  if (region && !REGIONS.includes(region as (typeof REGIONS)[number])) {
     return { error: "Pick a valid region." };
   }
   if (bio.length > 500) {

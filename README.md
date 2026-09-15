@@ -1,10 +1,10 @@
-# PartyGrid
+# SquadStack
 
-Oceania-friendly gamer profiles, LFG, clip shares, squads and server-side badges.
+Find your squad. Prove you play. Keep the party together — without replacing Discord.
 
-**Find a party. Show your skill.** Discord stays the chat — PartyGrid is the lobby.
+Gamer profiles, LFG, clip shares, squads and server-side badges. Discord stays the chat; SquadStack is the lobby.
 
-Dogfood audience: Sleep Twinz (AU YouTube gaming) / Oceania. UI copy uses Australian English where it matters. Default region is Oceania; clocks display in `Australia/Melbourne`.
+The GitHub repo may still be named `partygrid`. The product name is **SquadStack**.
 
 ## Stack
 
@@ -25,11 +25,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Seeded demo accounts (password `partygrid`):
+Seeded demo accounts (password `squadstack`):
 
-- `ash@partygrid.local`
-- `kiwi@partygrid.local`
-- `twinz@partygrid.local`
+- `ash@squadstack.local` — Americas
+- `riko@squadstack.local` — Asia
+- `nia@squadstack.local` — Europe
 
 ## What is implemented
 
@@ -37,7 +37,7 @@ Seeded demo accounts (password `partygrid`):
 | --- | --- |
 | Email signup / sign-in + session-gated writes | Implemented |
 | 13+ age gate (signup + OAuth onboarding) + ToS / age pages | Implemented |
-| Gamer profile (name, avatar URL, bio, region, timezone, game tags + curated autocomplete) | Implemented |
+| Gamer profile (name, avatar URL, bio, optional region/timezone, game tags + curated autocomplete) | Implemented |
 | Linked accounts: Discord OAuth, Steam OpenID / URL, manual Xbox/PSN/Riot/Epic | Implemented (OAuth needs keys) |
 | Verified vs claimed badges | Implemented |
 | LFG CRUD, 2–24h expiry, filters, expired hidden by default | Implemented |
@@ -46,6 +46,8 @@ Seeded demo accounts (password `partygrid`):
 | Achievements (server-side unlocks) | Implemented |
 | Home feed: active LFG + newest clips | Implemented |
 | Report + block | Implemented |
+
+Region is optional on profiles (Americas, Europe, Asia, Oceania, Africa, Global). LFG posts still carry a region for filtering. Timezone is optional; timestamps fall back to UTC.
 
 ## Stubbed / needs keys
 
@@ -68,7 +70,7 @@ Unlocked on the server after writes (not OAuth-only):
 - **Squad Up** — create or join a squad
 - **Highlight Reel** — 10 clips
 - **Matchmaker** — 10 LFG posts
-- **On the Grid** — 7-day Melbourne activity streak
+- **On the Stack** — 7-day activity streak (UTC calendar days)
 
 ## Postgres swap (production)
 

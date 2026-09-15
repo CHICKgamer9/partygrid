@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { melbourneDate } from "@/lib/time";
+import { calendarDate } from "@/lib/time";
 
 export const ACHIEVEMENTS = [
   {
@@ -33,8 +33,8 @@ export const ACHIEVEMENTS = [
     description: "Posted 10 LFG listings.",
   },
   {
-    slug: "on-the-grid",
-    name: "On the Grid",
+    slug: "on-the-stack",
+    name: "On the Stack",
     description: "Showed up 7 days in a row.",
   },
 ] as const;
@@ -54,7 +54,7 @@ async function unlock(userId: string, slug: AchievementSlug) {
 }
 
 export async function recordActivity(userId: string) {
-  const date = melbourneDate();
+  const date = calendarDate();
   await prisma.activityDay.upsert({
     where: { userId_date: { userId, date } },
     create: { userId, date },
@@ -62,8 +62,8 @@ export async function recordActivity(userId: string) {
   });
 }
 
-function melbourneDateOffset(daysAgo: number) {
-  const [year, month, day] = melbourneDate().split("-").map(Number);
+function utcDateOffset(daysAgo: number) {
+  const [year, month, day] = calendarDate().split("-").map(Number);
   const cursor = new Date(Date.UTC(year, month - 1, day));
   cursor.setUTCDate(cursor.getUTCDate() - daysAgo);
   return cursor.toISOString().slice(0, 10);
@@ -72,7 +72,7 @@ function melbourneDateOffset(daysAgo: number) {
 function hasSevenDayStreak(dates: string[]) {
   const set = new Set(dates);
   for (let i = 0; i < 7; i += 1) {
-    if (!set.has(melbourneDateOffset(i))) return false;
+    if (!set.has(utcDateOffset(i))) return false;
   }
   return true;
 }
@@ -98,6 +98,6 @@ export async function syncAchievements(userId: string) {
   if (clipCount >= 10) await unlock(userId, "highlight-reel");
   if (memberships >= 1) await unlock(userId, "squad-up");
   if (hasSevenDayStreak(days.map((day) => day.date))) {
-    await unlock(userId, "on-the-grid");
+    await unlock(userId, "on-the-stack");
   }
 }

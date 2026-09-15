@@ -1,16 +1,13 @@
-export const APP_NAME = "PartyGrid";
-export const APP_TZ = "Australia/Melbourne";
-export const DEFAULT_REGION = "Oceania";
+export const APP_NAME = "SquadStack";
 export const MIN_AGE = 13;
 
 export const REGIONS = [
-  "Oceania",
-  "North America",
+  "Americas",
   "Europe",
   "Asia",
-  "South America",
+  "Oceania",
   "Africa",
-  "Middle East",
+  "Global",
 ] as const;
 
 export const PLATFORMS = [

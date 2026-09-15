@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 async function main() {
-  const passwordHash = await bcrypt.hash("partygrid", 12);
+  const passwordHash = await bcrypt.hash("squadstack", 12);
   const now = Date.now();
 
   await prisma.report.deleteMany();
@@ -23,13 +23,13 @@ async function main() {
 
   const ash = await prisma.user.create({
     data: {
-      email: "ash@partygrid.local",
+      email: "ash@squadstack.local",
       passwordHash,
-      displayName: "Oceania Ash",
-      name: "Oceania Ash",
-      bio: "Melbourne nights, ranked queue, too much energy drink.",
-      region: "Oceania",
-      timezone: "Australia/Melbourne",
+      displayName: "Ash Vale",
+      name: "Ash Vale",
+      bio: "NA west, ranked queue, too much energy drink.",
+      region: "Americas",
+      timezone: "America/Los_Angeles",
       dateOfBirth: new Date("1998-04-12"),
       tosAcceptedAt: new Date(),
       gameTags: {
@@ -37,42 +37,42 @@ async function main() {
       },
       linkedAccounts: {
         create: [
-          { platform: "discord", handle: "oceania_ash", verified: false },
-          { platform: "riot", handle: "Ash#OCE", verified: false },
+          { platform: "discord", handle: "ashvale", verified: false },
+          { platform: "riot", handle: "Ash#NA1", verified: false },
         ],
       },
     },
   });
 
-  const kiwi = await prisma.user.create({
+  const riko = await prisma.user.create({
     data: {
-      email: "kiwi@partygrid.local",
+      email: "riko@squadstack.local",
       passwordHash,
-      displayName: "Kiwi Queue",
-      name: "Kiwi Queue",
-      bio: "Auckland-based, down for late AU customs.",
-      region: "Oceania",
-      timezone: "Pacific/Auckland",
+      displayName: "Riko Queue",
+      name: "Riko Queue",
+      bio: "Tokyo nights, down for customs after work.",
+      region: "Asia",
+      timezone: "Asia/Tokyo",
       dateOfBirth: new Date("1996-11-02"),
       tosAcceptedAt: new Date(),
       gameTags: {
         create: [{ name: "Helldivers 2" }, { name: "Apex Legends" }],
       },
       linkedAccounts: {
-        create: [{ platform: "steam", handle: "kiwi_queue", verified: false }],
+        create: [{ platform: "steam", handle: "riko_queue", verified: false }],
       },
     },
   });
 
-  const twin = await prisma.user.create({
+  const nia = await prisma.user.create({
     data: {
-      email: "twinz@partygrid.local",
+      email: "nia@squadstack.local",
       passwordHash,
-      displayName: "Twinz Lab",
-      name: "Twinz Lab",
-      bio: "Sleep Twinz dogfood account — clips, LFG, and a squad for AU nights.",
-      region: "Oceania",
-      timezone: "Australia/Melbourne",
+      displayName: "Nia Cross",
+      name: "Nia Cross",
+      bio: "EU evenings — clips, LFG, and a squad that actually stacks.",
+      region: "Europe",
+      timezone: "Europe/London",
       dateOfBirth: new Date("1995-06-20"),
       tosAcceptedAt: new Date(),
       gameTags: {
@@ -84,8 +84,8 @@ async function main() {
       },
       linkedAccounts: {
         create: [
-          { platform: "discord", handle: "sleeptwinz", verified: false },
-          { platform: "xbox", handle: "SleepTwinzAU", verified: false },
+          { platform: "discord", handle: "niacross", verified: false },
+          { platform: "xbox", handle: "NiaCross", verified: false },
         ],
       },
     },
@@ -99,29 +99,29 @@ async function main() {
         platform: "PC",
         rank: "Diamond",
         rolesNeeded: "Controller or initiator",
-        region: "Oceania",
+        region: "Americas",
         voice: true,
-        discordLink: "https://discord.gg/partygrid",
+        discordLink: "https://discord.gg/squadstack",
         expiresAt: new Date(now + 5 * 60 * 60 * 1000),
       },
       {
-        userId: kiwi.id,
+        userId: riko.id,
         game: "Helldivers 2",
         platform: "PC",
         rank: "Super Citizen",
         rolesNeeded: "Anyone with a mic",
-        region: "Oceania",
+        region: "Asia",
         voice: true,
-        discordLink: "https://discord.gg/partygrid",
+        discordLink: "https://discord.gg/squadstack",
         expiresAt: new Date(now + 10 * 60 * 60 * 1000),
       },
       {
-        userId: twin.id,
+        userId: nia.id,
         game: "Fortnite",
         platform: "PlayStation",
         rank: "Unreal-adjacent",
         rolesNeeded: "IGL + IGL-listener",
-        region: "Oceania",
+        region: "Europe",
         voice: true,
         expiresAt: new Date(now + 3 * 60 * 60 * 1000),
       },
@@ -131,7 +131,7 @@ async function main() {
         platform: "PC",
         rank: "Gold",
         rolesNeeded: "Vanguard",
-        region: "Oceania",
+        region: "Global",
         voice: false,
         expiresAt: new Date(now - 2 * 60 * 60 * 1000),
       },
@@ -141,21 +141,21 @@ async function main() {
   await prisma.clip.createMany({
     data: [
       {
-        userId: twin.id,
+        userId: nia.id,
         url: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
         title: "Warm-up clip energy",
         gameTag: "Fortnite",
-        caption: "Seed clip so the board isn't empty — swap for a Twinz upload.",
+        caption: "Seed clip so discover isn't empty.",
       },
       {
         userId: ash.id,
         url: "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
-        title: "OCE ranked moment",
+        title: "Ranked moment",
         gameTag: "Valorant",
         caption: "Placeholder highlight for discover.",
       },
       {
-        userId: kiwi.id,
+        userId: riko.id,
         url: "https://www.youtube.com/watch?v=M7lc1UVf-VE",
         title: "Democracy spread",
         gameTag: "Helldivers 2",
@@ -166,51 +166,51 @@ async function main() {
 
   const squad = await prisma.squad.create({
     data: {
-      name: "Sleep Shift",
-      slug: "sleep-shift",
-      bio: "AU/NZ night crew. Discord is the call — PartyGrid is the lobby.",
+      name: "Night Stack",
+      slug: "night-stack",
+      bio: "Cross-region crew. Discord is the call — SquadStack is the lobby.",
       games: "Fortnite, Valorant, Helldivers 2",
-      discordLink: "https://discord.gg/partygrid",
-      creatorId: twin.id,
+      discordLink: "https://discord.gg/squadstack",
+      creatorId: nia.id,
     },
   });
 
   await prisma.squadMember.createMany({
     data: [
-      { squadId: squad.id, userId: twin.id },
+      { squadId: squad.id, userId: nia.id },
       { squadId: squad.id, userId: ash.id },
     ],
   });
 
-  const melbourneDates = Array.from({ length: 7 }, (_, index) => {
+  const utcDates = Array.from({ length: 7 }, (_, index) => {
     const date = new Date();
     date.setUTCDate(date.getUTCDate() - index);
-    return date.toLocaleDateString("en-CA", { timeZone: "Australia/Melbourne" });
+    return date.toISOString().slice(0, 10);
   });
 
   await prisma.activityDay.createMany({
-    data: melbourneDates.map((date) => ({ userId: twin.id, date })),
+    data: utcDates.map((date) => ({ userId: nia.id, date })),
   });
 
   await prisma.userAchievement.createMany({
     data: [
-      { userId: twin.id, slug: "linked-up" },
-      { userId: twin.id, slug: "party-starter" },
-      { userId: twin.id, slug: "clipped" },
-      { userId: twin.id, slug: "squad-up" },
-      { userId: twin.id, slug: "on-the-grid" },
+      { userId: nia.id, slug: "linked-up" },
+      { userId: nia.id, slug: "party-starter" },
+      { userId: nia.id, slug: "clipped" },
+      { userId: nia.id, slug: "squad-up" },
+      { userId: nia.id, slug: "on-the-stack" },
       { userId: ash.id, slug: "linked-up" },
       { userId: ash.id, slug: "party-starter" },
       { userId: ash.id, slug: "clipped" },
       { userId: ash.id, slug: "squad-up" },
-      { userId: kiwi.id, slug: "linked-up" },
-      { userId: kiwi.id, slug: "party-starter" },
-      { userId: kiwi.id, slug: "clipped" },
+      { userId: riko.id, slug: "linked-up" },
+      { userId: riko.id, slug: "party-starter" },
+      { userId: riko.id, slug: "clipped" },
     ],
   });
 
-  console.log("Seeded PartyGrid demo users (password: partygrid)");
-  console.log("  ash@partygrid.local / kiwi@partygrid.local / twinz@partygrid.local");
+  console.log("Seeded SquadStack demo users (password: squadstack)");
+  console.log("  ash@squadstack.local / riko@squadstack.local / nia@squadstack.local");
 }
 
 main()

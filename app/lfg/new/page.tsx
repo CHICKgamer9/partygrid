@@ -11,7 +11,7 @@ export default async function NewLfgPage() {
       <div>
         <h1 className="text-3xl font-bold">Post LFG</h1>
         <p className="text-sm text-muted">
-          2–24 hour expiry. Drop a Discord link so mates can jump in.
+          2–24 hour expiry. Drop a Discord link so the party can jump in.
         </p>
       </div>
       <Card className="p-6">

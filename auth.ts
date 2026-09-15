@@ -74,8 +74,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           displayName:
             user.name ?? user.email?.split("@")[0] ?? "Player",
           avatarUrl: user.image,
-          region: "Oceania",
-          timezone: "Australia/Melbourne",
         },
       });
     },

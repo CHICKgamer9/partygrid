@@ -185,15 +185,16 @@ export function ProfileForm({
         />
       </Field>
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Region">
+        <Field label="Region (optional)">
           <select className={fieldClass} name="region" defaultValue={region}>
+            <option value="">Not set</option>
             {REGIONS.map((item) => (
               <option key={item}>{item}</option>
             ))}
           </select>
         </Field>
-        <Field label="Timezone" hint="Default is Australia/Melbourne.">
-          <input className={fieldClass} name="timezone" defaultValue={timezone} />
+        <Field label="Timezone (optional)" hint="IANA name, e.g. America/New_York. Leave blank to show times in UTC.">
+          <input className={fieldClass} name="timezone" defaultValue={timezone} placeholder="UTC" />
         </Field>
       </div>
       <Field
@@ -274,7 +275,7 @@ export function LfgForm({
           <select
             className={fieldClass}
             name="region"
-            defaultValue={defaults?.region ?? "Oceania"}
+            defaultValue={defaults?.region ?? "Global"}
           >
             {REGIONS.map((item) => (
               <option key={item}>{item}</option>

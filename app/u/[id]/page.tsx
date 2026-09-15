@@ -62,7 +62,8 @@ export default async function ProfilePage({
           <div className="min-w-0 flex-1">
             <h1 className="text-3xl font-bold">{displayNameOf(user)}</h1>
             <p className="mt-1 text-sm text-muted">
-              {user.region} · {user.timezone}
+              {[user.region, user.timezone].filter(Boolean).join(" · ") ||
+                "Region and timezone not set"}
             </p>
             <p className="mt-3 max-w-2xl text-sm">{user.bio || "No bio yet."}</p>
             <div className="mt-3 flex flex-wrap gap-1.5">

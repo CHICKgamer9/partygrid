@@ -6,7 +6,7 @@ import { Badge, Button, Card, Container, displayNameOf } from "@/components/ui";
 import { UserAvatar } from "@/components/user-avatar";
 import { prisma } from "@/lib/prisma";
 import { getSessionUser } from "@/lib/session";
-import { formatMelbourne, isExpired, relativeExpiry } from "@/lib/time";
+import { formatWhen, isExpired, relativeExpiry } from "@/lib/time";
 
 export async function generateMetadata({
   params,
@@ -73,8 +73,8 @@ export default async function LfgDetailPage({
           </p>
         ) : null}
         <p className="mt-2 text-sm text-muted">
-          Expires {formatMelbourne(post.expiresAt)} · posted{" "}
-          {formatMelbourne(post.createdAt)}
+          Expires {formatWhen(post.expiresAt)} · posted{" "}
+          {formatWhen(post.createdAt)}
         </p>
         {post.discordLink ? (
           <div className="mt-5">
